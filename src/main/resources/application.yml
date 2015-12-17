@@ -52,5 +52,18 @@ security:
     resource:
       userInfoUri: https://api.github.com/user
       preferTokenInfo: false
-
+---
+spring:
+  profiles: auth0
+security:
+  oauth2:
+    client:
+      clientId: ${AUTH0_CLIENT_ID}
+      clientSecret: ${AUTH0_CLIENT_SECRET}
+      accessTokenUri: https://{AUTH0_TENANT}.auth0.com/oauth/token
+      userAuthorizationUri: https://{AUTH0_TENANT}.auth0.com/authorize
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: https://{AUTH0_TENANT}.auth0.com/userinfo
+      preferTokenInfo: false
     
